@@ -1,0 +1,7 @@
+services:
+  mlops-api:
+    build: .
+    image: mlops-cd-demo:local
+    ports:
+      - "5000:5000"
+    restart: unless-stopped

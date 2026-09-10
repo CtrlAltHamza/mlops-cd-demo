@@ -1,7 +1,10 @@
+from pathlib import Path
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+APPLICATION_VERSION = Path("VERSION").read_text().strip()
 MODEL_VERSION = "1.0"
 
 
@@ -16,6 +19,7 @@ def home():
 @app.route("/health")
 def health():
     return jsonify({
+        "application_version": APPLICATION_VERSION,
         "status": "healthy",
         "model_version": MODEL_VERSION
     })
